@@ -1,4 +1,5 @@
 ﻿using Practica.EF.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,8 +16,16 @@ namespace Practica.EF.Logic
         public void Delete(int id)
         {
             var shipperAEliminar = context.Shippers.Find(id);
-            context.Shippers.Remove(shipperAEliminar);
-            context.SaveChanges();
+            if (shipperAEliminar != null)
+            {
+                context.Shippers.Remove(shipperAEliminar);
+                context.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
+                Console.WriteLine(" ");
+            }
         }
 
         public List<Shippers> GetAll()
@@ -27,8 +36,16 @@ namespace Practica.EF.Logic
         public void Update(Shippers shipper)
         {
             var shipperUpdate = context.Shippers.Find(shipper.ShipperID);
-            shipperUpdate.CompanyName= shipper.CompanyName;
-            context.SaveChanges();
+            if (shipperUpdate != null)
+            {
+                shipperUpdate.CompanyName = shipper.CompanyName;
+                context.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
+                Console.WriteLine(" ");
+            } 
         }
     }
 }

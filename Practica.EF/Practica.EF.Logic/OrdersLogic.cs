@@ -1,4 +1,5 @@
 ﻿using Practica.EF.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,8 +16,16 @@ namespace Practica.EF.Logic
         public void Delete(int id)
         {
             var ordersAEliminar = context.Orders.Find(id);
-            context.Orders.Remove(ordersAEliminar);
-            context.SaveChanges();
+            if (ordersAEliminar != null)
+            {
+                context.Orders.Remove(ordersAEliminar);
+                context.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
+                Console.WriteLine(" ");
+            }    
         }
 
         public List<Orders> GetAll()
@@ -27,8 +36,17 @@ namespace Practica.EF.Logic
         public void Update(Orders orders)
         {
             var ordersUpdate = context.Orders.Find(orders.OrderID);
-            ordersUpdate.OrderDate = orders.OrderDate;
-            context.SaveChanges();
+            if (ordersUpdate != null)
+            {
+                ordersUpdate.ShipName = orders.ShipName;
+                ordersUpdate.ShipAddress = orders.ShipAddress;
+                context.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
+                Console.WriteLine(" ");
+            }
         }
     }
 }

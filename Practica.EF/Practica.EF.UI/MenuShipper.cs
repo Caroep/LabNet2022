@@ -32,15 +32,17 @@ namespace Practica.EF.UI
                             Console.WriteLine(" ");
                             foreach (Shippers shipper in shippersLogic.GetAll())
                             {
-                                Console.WriteLine($"{shipper.CompanyName}");
+                                Console.WriteLine($"{shipper.ShipperID}-{shipper.CompanyName} -{shipper.Phone}");
                             }
                             Console.WriteLine(" ");
                             break;
                         case 2:
                             ShippersLogic shippersLogic1 = new ShippersLogic();
+                            Console.WriteLine("NOMBRE DE LA COMPAÑIA");
+                            string k = Console.ReadLine();
                             shippersLogic1.Add(new Shippers
                             {
-                                CompanyName = "Company",
+                                CompanyName = k,
                                 Phone = "1234567",
                             });
                             break;
@@ -48,9 +50,11 @@ namespace Practica.EF.UI
                             ShippersLogic shippersLogic2 = new ShippersLogic();
                             Console.WriteLine("INGRESE EL ID DEL ELEMENTO A MODIFICAR: ");
                             int n = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("NOMBRE DE LA COMPAÑIA");
+                            string z = Console.ReadLine();
                             shippersLogic2.Update(new Shippers
                             {
-                                CompanyName = "Company2",
+                                CompanyName = z,
                                 ShipperID = n,
                             });
                             break;

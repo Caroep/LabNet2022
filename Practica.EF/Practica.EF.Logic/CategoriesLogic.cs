@@ -29,15 +29,32 @@ namespace Practica.EF.Logic
         public void Delete(int id)
         {
             var categorieAEliminar = context.Categories.Find(id);
-            context.Categories.Remove(categorieAEliminar);
-            context.SaveChanges();
+            if(categorieAEliminar != null)
+            {
+                context.Categories.Remove(categorieAEliminar);
+                context.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
+                Console.WriteLine(" ");
+            }
         }
-
+        
         public void Update(Categories categorie)
         {
             var categorieUpdate = context.Categories.Find(categorie.CategoryID);
-            categorieUpdate.Description = categorie.Description;
-            context.SaveChanges();
+            if (categorieUpdate != null)
+            {
+                categorieUpdate.CategoryName = categorie.CategoryName;
+                categorieUpdate.Description = categorie.Description;
+                context.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
+                Console.WriteLine(" ");
+            }
         }
     }
 }

@@ -39,20 +39,25 @@ namespace Practica.EF.UI
                             break;
                         case 2:
                             OrdersLogic ordersLogic1 = new OrdersLogic();
+                            Console.WriteLine("Nombre de Ship en orden");
+                            string o = Console.ReadLine();
                             ordersLogic1.Add(new Orders
                             {
-                                ShipName ="nombre" ,
-                                OrderDate = DateTime.Now,
-                            }) ;
+                                ShipName = o,
+                                OrderDate = DateTime.Now
+                            });
                             break;
                         case 3:
                             OrdersLogic ordersLogic2 = new OrdersLogic();
-                            Console.WriteLine("INGRESE EL ID DEL ELEMENTO A MODIFICAR DESDE EL INICIAL 1048: ");
+                            Console.WriteLine("INGRESE EL ID A MODIFICAR: ");
                             int n = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Nombre de Ship en orden");
+                            string x = Console.ReadLine();
                             ordersLogic2.Update(new Orders
                             {
-                                ShipName = "Sugar",
-                                OrderID = n,
+                                ShipName = x,
+                                OrderDate = DateTime.Now,
+                                OrderID = n
                             });
                             break;
                         case 4:

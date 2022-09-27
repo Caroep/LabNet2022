@@ -31,25 +31,31 @@ namespace Practica.EF.UI
                             Console.WriteLine(" ");
                             foreach (Categories categorie in categorieLogic1.GetAll())
                             {
-                                Console.WriteLine($"{categorie.CategoryID} - {categorie.CategoryName}-{categorie.Description}");
+                                Console.WriteLine($"{categorie.CategoryID} - {categorie.CategoryName}");
                             }
+                            Console.WriteLine(" ");
                             break;
                         case 2:
                             CategoriesLogic categorieLogic2 = new CategoriesLogic();
+                            Console.WriteLine("NOMBRE DE LA CATEGORIA");
+                            string b = Console.ReadLine();
                             categorieLogic2.Add(new Categories
                             {
-                                CategoryName = "Bread"
+                                CategoryName = b
                             });
                             break;
                         case 3:
                             CategoriesLogic categorieLogic3 = new CategoriesLogic();
                             Console.WriteLine("INGRESE EL ID DEL ELEMENTO A MODIFICAR: ");
                             int n = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("NOMBRE DE LA CATEGORIA");
+                            string a = Console.ReadLine();
                             categorieLogic3.Update(new Categories
                             {
-                                CategoryName = "Sugar",
+                                CategoryName= a,
+                                Description =" DESCRIPCION",
                                 CategoryID = n
-                            });
+                            });;
                             break;
                         case 4:
                             CategoriesLogic categorieLogic4 = new CategoriesLogic();
