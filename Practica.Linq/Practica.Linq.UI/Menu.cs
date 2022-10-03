@@ -20,10 +20,20 @@ namespace Practica.Linq.UI
                 do
                 {
                     Console.WriteLine("Ingrese una opcion");
-                    Console.WriteLine("1:Ej. 1      2.Ej.2      3.Ej.3      4.Ej.4      " +
-                       "5.Ej.5      6.Ej.6      7.Ej. 7        8.Ej.8      9.Ej.9");
-                    Console.WriteLine("10.Ej.10     11.Ej.11       12.Ej.12        " +
-                        "13.Ej.13        14.Salir");
+                    Console.WriteLine("------1:Ej. 1------");
+                    Console.WriteLine("------2:Ej. 2------");
+                    Console.WriteLine("------3:Ej. 3------");
+                    Console.WriteLine("------4:Ej. 4------");
+                    Console.WriteLine("------5:Ej. 5------");
+                    Console.WriteLine("------6:Ej. 6------");
+                    Console.WriteLine("------7:Ej. 7------");
+                    Console.WriteLine("------8:Ej. 8------");
+                    Console.WriteLine("------9:Ej. 9------");
+                    Console.WriteLine("------10:Ej. 10------");
+                    Console.WriteLine("------11:Ej. 11------");
+                    Console.WriteLine("------12:Ej. 12------");
+                    Console.WriteLine("------13:Ej. 13------");
+                    Console.WriteLine("------14: Salir------");
                     opcion = Convert.ToInt32(Console.ReadLine());
                     switch (opcion)
                     {
@@ -41,9 +51,7 @@ namespace Practica.Linq.UI
                                 else
                                 {
                                     Console.WriteLine("INGRESAR UN ID CORRECTAMENTE DE 5 CARACTERES");
-                                }
-                              );
-                               
+                                }          
                             }
                             
                             Console.WriteLine();
@@ -109,7 +117,7 @@ namespace Practica.Linq.UI
 
                         case 14:
                             Console.WriteLine("Adiós");
-                            Console.WriteLine();
+                            Console.ReadKey();
                             break;
 
                         default:
@@ -117,7 +125,7 @@ namespace Practica.Linq.UI
                             Console.WriteLine();
                             break;
                     }
-                } while (opcion != 13);
+                } while (opcion != 14);
 
             }
             catch (Exception e)
