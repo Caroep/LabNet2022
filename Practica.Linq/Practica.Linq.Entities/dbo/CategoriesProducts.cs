@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Practica.Linq.Entities.dbo
+{
+    public class CategoriesProducts
+    {
+        public int CategoryID { get; set; }
+        public string CategoryName { get; set; }
+        public int ProductID { get; set; }
+        public string ProductName { get; set; }
+
+
+
+    }
+}
