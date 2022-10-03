@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+form{
+    background-color:cadetblue;
+    font-family:Helvetica;
+    color: white;
+    position: relative;
+    padding:10px;
+    margin:auto;
+    height: 400px;
+    margin-top: 100px;
+    border-radius: 10px;
+}
+
+div{
+    margin-top: 10px;
+    margin: 5px;
+}
+
+.form-control{
+    border-radius: 5px;
+    width: 300px;
+    height: 30px;
+    padding: 10px;
+}
+
+#edad{
+    border-radius: 5px;
+    height: 30px;
+}
+
+button{
+    background-color:antiquewhite;
+    border-radius: 5px;
+    margin-top: 10px;
+    height: 30px;;
+    width: 70px;
+    color:black;
+    border       : 2px solid #333;
+    cursor       : pointer;
+}
+

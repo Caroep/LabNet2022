@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario de Registro</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+        <form action="" id ="formulario" style="width: 400px;">
+            <fieldset>
+                <legend>Información personal: </legend>
+                <div>
+                    <div>
+                        <h4 for="nombreImput" class="form-h4">Nombre:</h4>
+                        <input type="text" class="form-control" id="nombre">
+                    </div>
+                    <div>
+                        <h4 for="apellidoImput" class="form-h4">Apellido:</h4>
+                        <input type="text" class="form-control" id="apellido">
+                    </div>
+                    <div class="edad" style="width: 150px;">
+                        <h4 for="edadImput" class="form-h4">Edad:</h4>
+                        <input type="number" id ="edad" min="0" max="120">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="sexo" id="masculino">
+                        <label class="form-check-label" for="masculino">Masculino</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="sexo" id="femenino" checked>
+                        <label class="form-check-label" for="femenino">Femenino</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="sexo" id="otros" checked>
+                        <label class="form-check-label" for="otros">Otros</label>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Información adicional: </legend>
+                <div>
+                    <div>
+                        <h4 for="empresaImput" class="form-h4">Empresa:</h4>
+                        <input type="text" class="form-control" name="empresa" id="empresa">
+                    </div>
+                </div>
+            </fieldset>
+                <button type="submit" onclick="enviarFormulario()" value="envio">Submit</button>
+                <button type="button" onclick="limpiarFormulario()" value="Limpiar formulario">Limpiar</button>
+          </form>
+    <script src="event.js"></script>
+  </body>
+</html>
