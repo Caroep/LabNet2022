@@ -1,13 +1,6 @@
 ﻿using Practica.EF.Entities;
 using Practica.EF.Logic;
 using System;
-using System.ComponentModel;
-using System.ComponentModel.Design;
-using System.Data.Common;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Data.SqlClient;
-using System.Security.Policy;
 
 namespace Practica.EF.UI
 {
@@ -17,8 +10,13 @@ namespace Practica.EF.UI
         {
             Menu menu = new Menu();
             menu.mostrarOpciones();
+
+            CategoriesLogic categories = new CategoriesLogic();
+            Console.WriteLine(categories.Search(13));
+
+            Console.ReadLine();
         }
     }
 }
 
-        
+

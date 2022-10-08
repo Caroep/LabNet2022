@@ -15,9 +15,9 @@ namespace Practica.EF.UI
         public void mostrarMenu()
         {
             int opc = 0;
-            try
+            do
             {
-                do
+                try
                 {
                     Console.WriteLine("INGRESAR UNA OPCIÓN DENTRO DE CARGADORES: ");
                     Console.WriteLine("1. MOSTRAR CARGADORES       2.AGREGAR UN NUEVO CARGADOR");
@@ -45,6 +45,7 @@ namespace Practica.EF.UI
                                 CompanyName = k,
                                 Phone = "1234567",
                             });
+                            Console.WriteLine("SE AGREGO CORRECTAMENTE");
                             break;
                         case 3:
                             ShippersLogic shippersLogic2 = new ShippersLogic();
@@ -52,11 +53,18 @@ namespace Practica.EF.UI
                             int n = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("NOMBRE DE LA COMPAÑIA");
                             string z = Console.ReadLine();
-                            shippersLogic2.Update(new Shippers
-                            {
-                                CompanyName = z,
-                                ShipperID = n,
-                            });
+                            //if (shippersLogic2.Update(new Shippers
+                            //{
+                            //    CompanyName = z,
+                            //    ShipperID = n,
+                            //}))
+                            //{
+                            //    Console.WriteLine("SE MODIFICO CORRECTAMENTE");
+                            //}
+                            //else
+                            //{
+                            //    Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
+                            //}
                             break;
                         case 4:
                             ShippersLogic shippersLogic3 = new ShippersLogic();
@@ -64,7 +72,14 @@ namespace Practica.EF.UI
                             int n1 = Convert.ToInt32(Console.ReadLine());
                             try
                             {
-                                shippersLogic3.Delete(n1);
+                                if (shippersLogic3.Delete(n1))
+                                {
+                                    Console.WriteLine("SE ELIMINO CORRECTAMENTE");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
+                                }
                             }
                             catch (DbUpdateException)
                             {
@@ -80,12 +95,17 @@ namespace Practica.EF.UI
                             Console.WriteLine("INGRESAR UNA OPCION VALIDA");
                             break;
                     }
-                } while (opc != 5);
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("LA OPCIÓN INGRESADA DEBE SER UN NUMERO");
-            }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("LA OPCIÓN INGRESADA DEBE SER UN NUMERO");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                Console.WriteLine(" ");         
+            } while (opc != 5);
         }
     }
 }

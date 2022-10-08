@@ -1,0 +1,29 @@
+﻿@model Practica.EF.MVC.Models.CategoriesView
+
+@{
+    ViewBag.Title = "Insert Page";
+}
+
+<h1> Insertar de Categories</h1>
+
+@using (Html.BeginForm("Insert", "Categories", FormMethod.Post))
+{
+    <div calass="row">
+        <div class="col-md-12">
+            <div>
+                @Html.LabelFor(c => c.Name)
+                @Html.TextBoxFor(c => c.Name, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(c => c.Name, null, new { @class = "peligro" })
+            </div>
+            <div>
+                @Html.LabelFor(c => c.Description)
+                @Html.TextBoxFor(c => c.Description, "", new { @class = "form-control" })
+            </div>
+            <br/>
+            <div>
+                <input type="submit" class=" btn btn-success" value="Guardar" />
+            </div>
+        </div> 
+    </div>
+   
+}

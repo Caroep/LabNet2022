@@ -13,18 +13,18 @@ namespace Practica.EF.Logic
             context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public Boolean Delete(int id)
         {
             var shipperAEliminar = context.Shippers.Find(id);
             if (shipperAEliminar != null)
             {
                 context.Shippers.Remove(shipperAEliminar);
                 context.SaveChanges();
+                return true;
             }
             else
             {
-                Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
-                Console.WriteLine(" ");
+                return  false;
             }
         }
 
@@ -35,17 +35,17 @@ namespace Practica.EF.Logic
 
         public void Update(Shippers shipper)
         {
-            var shipperUpdate = context.Shippers.Find(shipper.ShipperID);
-            if (shipperUpdate != null)
-            {
-                shipperUpdate.CompanyName = shipper.CompanyName;
-                context.SaveChanges();
-            }
-            else
-            {
-                Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
-                Console.WriteLine(" ");
-            } 
+            //var shipperUpdate = context.Shippers.Find(shipper.ShipperID);
+            //if (shipperUpdate != null)
+            //{
+            //    shipperUpdate.CompanyName = shipper.CompanyName;
+            //    context.SaveChanges();
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //} 
         }
     }
 }

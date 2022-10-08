@@ -14,9 +14,9 @@ namespace Practica.EF.UI
         public void mostrarOpciones()
         {
             int opcion = 0;
-            try
+            do
             {
-                do
+                try
                 {
                     Console.WriteLine("INGRESE UNA OPCIÓN: ");
                     Console.WriteLine("1: ORDENES         2: SHIPPERS");
@@ -26,7 +26,7 @@ namespace Practica.EF.UI
                     switch (opcion)
                     {
                         case 1:
-                            MenuOrders meOrd= new MenuOrders();
+                            MenuOrders meOrd = new MenuOrders();
                             meOrd.mostrarMenu();
                             break;
                         case 2:
@@ -46,16 +46,17 @@ namespace Practica.EF.UI
                             Console.WriteLine("Ingrese una opción valida");
                             break;
                     }
-
-                } while (opcion != 4);
-
-            }
-            catch (FormatException)
-            {
-
-                Console.WriteLine("LA OPCIÓN INGRESADA DEBE SER UN NUMERO");
-            }
-            
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("LA OPCIÓN INGRESADA DEBE SER UN NUMERO");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                Console.WriteLine(" ");
+            } while (opcion != 4);   
         }
     }
 }

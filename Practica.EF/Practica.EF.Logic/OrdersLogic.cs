@@ -13,18 +13,18 @@ namespace Practica.EF.Logic
             context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public Boolean Delete(int id)
         {
             var ordersAEliminar = context.Orders.Find(id);
             if (ordersAEliminar != null)
             {
                 context.Orders.Remove(ordersAEliminar);
                 context.SaveChanges();
+                return true;
             }
             else
             {
-                Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
-                Console.WriteLine(" ");
+                return false;
             }    
         }
 
@@ -35,18 +35,18 @@ namespace Practica.EF.Logic
 
         public void Update(Orders orders)
         {
-            var ordersUpdate = context.Orders.Find(orders.OrderID);
-            if (ordersUpdate != null)
-            {
-                ordersUpdate.ShipName = orders.ShipName;
-                ordersUpdate.ShipAddress = orders.ShipAddress;
-                context.SaveChanges();
-            }
-            else
-            {
-                Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
-                Console.WriteLine(" ");
-            }
+            //    var ordersUpdate = context.Orders.Find(orders.OrderID);
+            //    if (ordersUpdate != null)
+            //    {
+            //        ordersUpdate.ShipName = orders.ShipName;
+            //        ordersUpdate.ShipAddress = orders.ShipAddress;
+            //        context.SaveChanges();
+            //        return true;
+            //    }
+            //    else
+            //    {
+            //        return false;
+            //    }
         }
     }
 }

@@ -1,0 +1,36 @@
+﻿@model List<Practica.EF.MVC.Models.CategoriesView>
+
+    @{
+        ViewBag.Title = "Categories Page";
+    }
+    <h1>MOSTRAR CATEGORIES</h1>
+    <div class ="btn btn-default" style="text-align:left; padding: 5px; top: 5px">
+       @Html.ActionLink("Insertar Nueva Categoria", "Insert")
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead  style="background-color:navajowhite">
+                <tr style="text-align:center" >
+                    <td scope="col">Id Categories</td>
+                    <td scope="col">Name Categories</td>
+                    <td scope="col">Description</td>
+                    <td scope="col"> Action </td>
+                    <td scope="col"> Action </td>
+                </tr>
+            </thead>
+            <tbody style="background-color:antiquewhite">
+                @foreach (var categories in Model)
+                {
+                    <tr style="text-align:center">
+                        <th scope="row">@categories.Id</th>
+                        <td>@categories.Name</td>
+                        <td>@categories.Description</td>
+                        <td>@Html.ActionLink("Borrar","Delete",new {id = categories.Id}, new { onclick = "return confirm('Está seguro de borrar?')"})</td>
+                        <td>@Html.ActionLink("Modificar","Update", new {id = categories.Id})</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+

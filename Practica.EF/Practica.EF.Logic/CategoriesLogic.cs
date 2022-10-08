@@ -15,32 +15,27 @@ namespace Practica.EF.Logic
             return context.Categories.ToList();
         }
 
-        public int Tamanio()
-        {
-            return context.Categories.ToList().Count();
-        }
-
         public void Add(Categories newCategorie)
         {
             context.Categories.Add(newCategorie);
             context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public Boolean Delete(int id)
         {
             var categorieAEliminar = context.Categories.Find(id);
             if(categorieAEliminar != null)
             {
                 context.Categories.Remove(categorieAEliminar);
                 context.SaveChanges();
+                return true;
             }
             else
             {
-                Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
-                Console.WriteLine(" ");
+                return false;
             }
         }
-        
+
         public void Update(Categories categorie)
         {
             var categorieUpdate = context.Categories.Find(categorie.CategoryID);
@@ -48,13 +43,16 @@ namespace Practica.EF.Logic
             {
                 categorieUpdate.CategoryName = categorie.CategoryName;
                 categorieUpdate.Description = categorie.Description;
-                context.SaveChanges();
-            }
-            else
-            {
-                Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
-                Console.WriteLine(" ");
+                context.SaveChanges(); 
             }
         }
+
+        public Categories Search(int id)
+        {
+            var categorie = context.Categories.Find(id);
+            return categorie;
+        }
+
+      
     }
 }

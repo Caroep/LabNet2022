@@ -14,10 +14,10 @@ namespace Practica.EF.UI
         public void mostrarMenu()
         {
             int opc = 0;
+            do 
+            {
                 try
                 {
-                do 
-                { 
                     Console.WriteLine("INGRESAR UNA OPCIÓN DENTRO DE CATEGORIAS: ");
                     Console.WriteLine("1. MOSTRAR CATEGORIAS        2.AGREGAR UNA NUEVA CATEGORIA");
                     Console.WriteLine("3.MODIFICAR UNA CATEGORIA    4. BORRAR UNA CATEGORIA");
@@ -43,6 +43,7 @@ namespace Practica.EF.UI
                             {
                                 CategoryName = b
                             });
+                            Console.WriteLine("SE AGREGO CORRECTAMENTE");
                             break;
                         case 3:
                             CategoriesLogic categorieLogic3 = new CategoriesLogic();
@@ -50,12 +51,19 @@ namespace Practica.EF.UI
                             int n = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("NOMBRE DE LA CATEGORIA");
                             string a = Console.ReadLine();
-                            categorieLogic3.Update(new Categories
-                            {
-                                CategoryName= a,
-                                Description =" DESCRIPCION",
-                                CategoryID = n
-                            });;
+                            //if (categorieLogic3.Update(new Categories
+                            //{
+                            //    CategoryName = a,
+                            //    Description = " DESCRIPCION",
+                            //    CategoryID = n
+                            //}))
+                            //{
+                            //    Console.WriteLine("SE MODIFICO CORRECTAMENTE");
+                            //}
+                            //else
+                            //{
+                            //    Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
+                            //}
                             break;
                         case 4:
                             CategoriesLogic categorieLogic4 = new CategoriesLogic();
@@ -63,12 +71,18 @@ namespace Practica.EF.UI
                             int n1 = Convert.ToInt32(Console.ReadLine());
                             try
                             {
-                                categorieLogic4.Delete(n1);
+                                if (categorieLogic4.Delete(n1))
+                                {
+                                    Console.WriteLine("SE ELIMINO CORRECTAMENTE");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
+                                }
                             }
                             catch (DbUpdateException)
                             {
                                 Console.WriteLine("La categoria que desea ingresar se encuentra asosiada a un producto activo");
-                                Console.WriteLine(" ");
                             }
 
                             break;
@@ -79,12 +93,17 @@ namespace Practica.EF.UI
                             Console.WriteLine("INGRESAR UNA OPCION VALIDA");
                             break;
                     }
-                }while (opc != 5);
-        }
+                }
                 catch (FormatException)
                 {
                     Console.WriteLine("LA OPCIÓN INGRESADA DEBE SER UN NUMERO");
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                 Console.WriteLine(" ");
+            }while (opc != 5);
         }
     }
 }
