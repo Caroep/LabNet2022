@@ -5,7 +5,7 @@
     }
     <h1>MOSTRAR CATEGORIES</h1>
     <div class ="btn btn-default" style="text-align:left; padding: 5px; top: 5px">
-       @Html.ActionLink("Insertar Nueva Categoria", "Insert")
+       @Html.ActionLink("Insertar Nueva Categoria","Insert"))
     </div>
     <div class="table-responsive">
         <table class="table table-bordered">
@@ -26,7 +26,7 @@
                         <td>@categories.Name</td>
                         <td>@categories.Description</td>
                         <td>@Html.ActionLink("Borrar","Delete",new {id = categories.Id}, new { onclick = "return confirm('Está seguro de borrar?')"})</td>
-                        <td>@Html.ActionLink("Modificar","Update", new {id = categories.Id})</td>
+                        <td>@Html.ActionLink("Modificar","Insert", new {id = categories.Id})</td>
                     </tr>
                 }
             </tbody>

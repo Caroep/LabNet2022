@@ -34,7 +34,7 @@ namespace Practica.EF.MVC.Controllers
         public ActionResult Insert()
         {
 
-         return View();     
+            return View();
         }
 
         [HttpPost]
@@ -78,25 +78,58 @@ namespace Practica.EF.MVC.Controllers
             }
         }
 
-        public ActionResult Update(int id)
-        {
-            Categories categories = new Categories();
-            if (id != 0)
-            {
-              categories = logic.Search(id);
-            }
-            CategoriesView categoriesView = new CategoriesView
-            {
-                Id = categories.CategoryID,
-                Name = categories.CategoryName,
-                Description = categories.Description
-            };
+        //public ActionResult Update(int id)
+        //{
+        //    Categories categories = new Categories();
+        //    if (id != 0)
+        //    {
+        //      categories = logic.Search(id);
+        //    }
+        //    CategoriesView categoriesView = new CategoriesView
+        //    {
+        //        Id = categories.CategoryID,
+        //        Name = categories.CategoryName,
+        //        Description = categories.Description
+        //    };
 
-            return View(categoriesView);
+        //    return View(categoriesView);
+        //}
+
+        //[HttpPost]
+        //public ActionResult Update(CategoriesView categoriesView)
+        //{
+        //    Categories categoriesEntity = new Categories
+        //    {
+        //        CategoryID = categoriesView.Id,
+        //        CategoryName = categoriesView.Name,
+        //        Description = categoriesView.Description,
+        //    };
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            logic.Update(categoriesEntity);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine(ex.Message);
+        //            return RedirectToAction("Error", "Error");
+
+        //        }
+        //    }
+        //    return RedirectToAction("Index");
+        //}
+
+
+        public ActionResult Hibrido()
+        {
+
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Update(CategoriesView categoriesView)
+        public ActionResult Hibrido(CategoriesView categoriesView)
         {
             Categories categoriesEntity = new Categories
             {
@@ -105,7 +138,16 @@ namespace Practica.EF.MVC.Controllers
                 Description = categoriesView.Description,
             };
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                return View(categoriesView);
+            }
+
+            if (categoriesEntity.CategoryID == 0)
+            {
+                logic.Add(categoriesEntity);
+            }
+            else
             {
                 try
                 {
@@ -114,12 +156,12 @@ namespace Practica.EF.MVC.Controllers
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    return RedirectToAction("Index", "Error");
-
+                    return RedirectToAction("Error", "Error");
                 }
             }
             return RedirectToAction("Index");
         }
+
     }
 
 }
