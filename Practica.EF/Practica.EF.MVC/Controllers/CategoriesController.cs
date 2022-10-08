@@ -30,37 +30,45 @@ namespace Practica.EF.MVC.Controllers
 
             return View(categoriesView);
         }
-
-        public ActionResult Insert()
+        public ActionResult Hibrido()
         {
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult Insert(CategoriesView categoriesView)
+        public ActionResult Hibrido(CategoriesView categoriesView)
         {
-            try
-            {
-                if (ModelState.IsValid)
+                Categories categoriesEntity = new Categories
                 {
-                    Categories categoriesEntity = new Categories
-                    {
-                        CategoryName = categoriesView.Name,
-                        Description = categoriesView.Description
-                    };
+                    CategoryID = categoriesView.Id,
+                    CategoryName = categoriesView.Name,
+                    Description = categoriesView.Description,
+                };
 
-                    logic.Add(categoriesEntity);
-                    return RedirectToAction("Index");
+                if (!ModelState.IsValid)
+                {
+                    return View(categoriesView);
                 }
 
-                return View(categoriesView);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return RedirectToAction("Error", "Error");
-            }
+                if (categoriesEntity.CategoryID == 0)
+                {
+                    logic.Add(categoriesEntity);
+                }
+                else
+                {
+                    try
+                    {
+                        logic.Update(categoriesEntity);
+                    }
+                    catch (Exception ex)
+                    {
+                        return RedirectToAction("Index", "Error");
+                        Console.WriteLine(ex.Message);
+
+                }
+                }
+                return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
@@ -77,91 +85,5 @@ namespace Practica.EF.MVC.Controllers
                 return RedirectToAction("Error", "Error");
             }
         }
-
-        //public ActionResult Update(int id)
-        //{
-        //    Categories categories = new Categories();
-        //    if (id != 0)
-        //    {
-        //      categories = logic.Search(id);
-        //    }
-        //    CategoriesView categoriesView = new CategoriesView
-        //    {
-        //        Id = categories.CategoryID,
-        //        Name = categories.CategoryName,
-        //        Description = categories.Description
-        //    };
-
-        //    return View(categoriesView);
-        //}
-
-        //[HttpPost]
-        //public ActionResult Update(CategoriesView categoriesView)
-        //{
-        //    Categories categoriesEntity = new Categories
-        //    {
-        //        CategoryID = categoriesView.Id,
-        //        CategoryName = categoriesView.Name,
-        //        Description = categoriesView.Description,
-        //    };
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            logic.Update(categoriesEntity);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine(ex.Message);
-        //            return RedirectToAction("Error", "Error");
-
-        //        }
-        //    }
-        //    return RedirectToAction("Index");
-        //}
-
-
-        public ActionResult Hibrido()
-        {
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Hibrido(CategoriesView categoriesView)
-        {
-            Categories categoriesEntity = new Categories
-            {
-                CategoryID = categoriesView.Id,
-                CategoryName = categoriesView.Name,
-                Description = categoriesView.Description,
-            };
-
-            if (!ModelState.IsValid)
-            {
-                return View(categoriesView);
-            }
-
-            if (categoriesEntity.CategoryID == 0)
-            {
-                logic.Add(categoriesEntity);
-            }
-            else
-            {
-                try
-                {
-                    logic.Update(categoriesEntity);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    return RedirectToAction("Error", "Error");
-                }
-            }
-            return RedirectToAction("Index");
-        }
-
     }
-
 }

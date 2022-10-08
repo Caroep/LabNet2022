@@ -4,7 +4,7 @@
     ViewBag.Title = "Insert Page";
 }
 
-<h1> Insertar de Categories</h1>
+<h1> Categories</h1>
 
 @using (Html.BeginForm("Hibrido", "Categories", FormMethod.Post))
 {
@@ -19,11 +19,11 @@
                 @Html.LabelFor(c => c.Description)
                 @Html.TextBoxFor(c => c.Description, "", new { @class = "form-control" })
             </div>
-            <br/>
+            <br />
             <div>
                 <input type="submit" class=" btn btn-success" value="Guardar" />
             </div>
-        </div> 
+        </div>
     </div>
-   
+
 }
