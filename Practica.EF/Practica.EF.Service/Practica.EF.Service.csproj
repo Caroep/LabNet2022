@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6BC54BC1-A870-4057-A9E0-7231918941FC}</ProjectGuid>
+    <ProjectGuid>{580C478D-AB9E-4CCA-AED6-0F240F0F2EC0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Practica.EF.Entities</RootNamespace>
-    <AssemblyName>Practica.EF.Entities</AssemblyName>
+    <RootNamespace>Practica.EF.Service</RootNamespace>
+    <AssemblyName>Practica.EF.Service</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -51,25 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Categories.cs" />
-    <Compile Include="Models\CustomerDemographics.cs" />
-    <Compile Include="Models\Customers.cs" />
-    <Compile Include="Models\Employees.cs" />
-    <Compile Include="Models\Orders.cs" />
-    <Compile Include="Models\Order_Details.cs" />
-    <Compile Include="Models\Products.cs" />
+    <Compile Include="CategoriesService.cs" />
+    <Compile Include="ICategoriesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Region.cs" />
-    <Compile Include="Models\Shippers.cs" />
-    <Compile Include="Models\Suppliers.cs" />
-    <Compile Include="Models\Territories.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Practica.EF.Entities\Practica.EF.Entities.csproj">
+      <Project>{6BC54BC1-A870-4057-A9E0-7231918941FC}</Project>
+      <Name>Practica.EF.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Practica.EF.Logic\Practica.EF.Logic.csproj">
+      <Project>{7F141B2A-2091-475B-8FF1-2CED23EB3F09}</Project>
+      <Name>Practica.EF.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTOs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
