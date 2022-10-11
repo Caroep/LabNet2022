@@ -1,0 +1,28 @@
+﻿@model List<Practica.EF.MVC.Models.SpeciesView>
+
+<h1>MOSTRAR SPECIES</h1>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead style="background-color:navajowhite">
+            <tr style="text-align:center">
+                <td scope="col">name</td>
+                <td scope="col">classification</td>
+                <td scope="col">designation</td>
+                <td scope="col">language</td>
+                <td scope="auto">homeworld</td>
+            </tr>
+        </thead>
+        <tbody style="background-color:antiquewhite">
+            @foreach (var specie in Model)
+            {
+                <tr style="text-align:center">
+                    <th>@specie.name</th>
+                    <th>@specie.classification</th>
+                    <td>@specie.designation</td>
+                    <td>@specie.language</td>
+                    <td>@specie.homeworld</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

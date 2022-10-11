@@ -66,7 +66,7 @@ namespace Practica.EF.MVC.Controllers
                         return RedirectToAction("Index", "Error");
                         Console.WriteLine(ex.Message);
 
-                }
+                    }
                 }
                 return RedirectToAction("Index");
         }

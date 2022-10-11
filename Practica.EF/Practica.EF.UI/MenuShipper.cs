@@ -72,14 +72,14 @@ namespace Practica.EF.UI
                             int n1 = Convert.ToInt32(Console.ReadLine());
                             try
                             {
-                                if (shippersLogic3.Delete(n1))
-                                {
-                                    Console.WriteLine("SE ELIMINO CORRECTAMENTE");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
-                                }
+                                shippersLogic3.Delete(n1);
+                                //{
+                                //    Console.WriteLine("SE ELIMINO CORRECTAMENTE");
+                                //}
+                                //else
+                                //{
+                                //    Console.WriteLine("ERROR: EL ID SELECCIONADO ES NULO");
+                                //}
                             }
                             catch (DbUpdateException)
                             {

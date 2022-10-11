@@ -15,19 +15,17 @@ namespace Practica.EF.Logic
 
         public void Delete(int id)
         {
-            //var ordersAEliminar = context.Orders.Find(id);
-            //if (ordersAEliminar != null)
-            //{
-            //    context.Orders.Remove(ordersAEliminar);
-            //    context.SaveChanges();
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}    
+            var ordersAEliminar = context.Orders.Find(id);
+            if (ordersAEliminar != null)
+            {
+                context.Orders.Remove(ordersAEliminar);
+                context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("No se pudo realizar la operación solicitada");
+            }
         }
-
         public List<Orders> GetAll()
         {
             return context.Orders.ToList();
@@ -35,18 +33,17 @@ namespace Practica.EF.Logic
 
         public void Update(Orders orders)
         {
-            //    var ordersUpdate = context.Orders.Find(orders.OrderID);
-            //    if (ordersUpdate != null)
-            //    {
-            //        ordersUpdate.ShipName = orders.ShipName;
-            //        ordersUpdate.ShipAddress = orders.ShipAddress;
-            //        context.SaveChanges();
-            //        return true;
-            //    }
-            //    else
-            //    {
-            //        return false;
-            //    }
+            var ordersUpdate = context.Orders.Find(orders.OrderID);
+            if (ordersUpdate != null)
+            {
+                ordersUpdate.ShipName = orders.ShipName;
+                ordersUpdate.ShipAddress = orders.ShipAddress;
+                context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("No se pudo realizar la operación solicitada");
+            }
         }
     }
 }
