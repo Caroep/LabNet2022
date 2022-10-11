@@ -13,11 +13,11 @@ namespace Practica.EF.MVC.Controllers.Api
     public class SpeciesController : Controller
     {
         SpeciesLogic speciesLogic = new SpeciesLogic(); 
-        // GET: Species
+        // GET: api/Species
         public async Task<ActionResult> Index()
         {
             var specie = await speciesLogic.ListSpecies();
-            var list = specie.Select(s => new DTOFinal
+            var list = specie.Select(s => new SpeciesView
             {
                 Classification = s.Classification,
                 Language = s.Language,

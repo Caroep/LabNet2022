@@ -75,7 +75,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOs\DTOFinal.cs" />
     <Compile Include="DTOs\SpeciesDTO.cs" />
     <Compile Include="DTOs\StarWarsApiDTO.cs" />
     <Compile Include="Models\Categories.cs" />

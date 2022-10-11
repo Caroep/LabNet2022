@@ -14,24 +14,13 @@ namespace Practica.EF.Data
             HttpClient client = new HttpClient();
             var json = await client.GetStringAsync("https://swapi.dev/api/species/");
             var species = JsonConvert.DeserializeObject<StarWarsApiDTO>(json);
-            var speciesList = species.species.Select(s => new SpeciesDTO
+            var speciesList = species.results.Select(s => new SpeciesDTO
             {
-                AverageHeight = s.AverageHeight,
                 Classification = s.Classification,
-                AverageLifespan = s.AverageLifespan,
-                HairColors = s.HairColors,
-                EyeColors = s.EyeColors,
                 Designation = s.Designation,
                 Name = s.Name,
-                Created = s.Created,
-                Edited = s.Edited,
-                Films = s.Films,
                 Homeworld = s.Homeworld,
-                Language = s.Language,
-                People = s.People,
-                SkinColors = s.SkinColors,
-                Url = s.Url
-
+                Language = s.Language
             }).Take(5).ToList();
 
             return speciesList;

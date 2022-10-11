@@ -11,6 +11,6 @@ namespace Practica.EF.Entities.DTOs
         public int count{ get; set; }
         public string next { get; set; }
         public string previous { get; set; }
-        public ICollection<SpeciesDTO> species { get; set; }
+        public List<SpeciesDTO> results { get; set; }
     }
 }
