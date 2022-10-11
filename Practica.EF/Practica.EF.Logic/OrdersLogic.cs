@@ -13,19 +13,19 @@ namespace Practica.EF.Logic
             context.SaveChanges();
         }
 
-        public Boolean Delete(int id)
+        public void Delete(int id)
         {
-            var ordersAEliminar = context.Orders.Find(id);
-            if (ordersAEliminar != null)
-            {
-                context.Orders.Remove(ordersAEliminar);
-                context.SaveChanges();
-                return true;
-            }
-            else
-            {
-                return false;
-            }    
+            //var ordersAEliminar = context.Orders.Find(id);
+            //if (ordersAEliminar != null)
+            //{
+            //    context.Orders.Remove(ordersAEliminar);
+            //    context.SaveChanges();
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}    
         }
 
         public List<Orders> GetAll()

@@ -12,7 +12,7 @@ namespace Practica.EF.Logic
     {
         List<T> GetAll();
         void Add(T newVar);
-        Boolean Delete(int id);
+        void Delete(int id);
         void Update(T var);
     }
 }

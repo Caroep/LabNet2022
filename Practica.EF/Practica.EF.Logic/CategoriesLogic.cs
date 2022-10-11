@@ -21,18 +21,17 @@ namespace Practica.EF.Logic
             context.SaveChanges();
         }
 
-        public Boolean Delete(int id)
+        public void Delete(int id)
         {
             var categorieAEliminar = context.Categories.Find(id);
             if(categorieAEliminar != null)
             {
                 context.Categories.Remove(categorieAEliminar);
                 context.SaveChanges();
-                return true;
             }
             else
             {
-                return false;
+                throw new Exception("No se pudo eliminar, no existe");
             }
         }
 
@@ -49,7 +48,7 @@ namespace Practica.EF.Logic
 
         public Categories Search(int id)
         {
-            var categorie = context.Categories.Find(id);
+            Categories categorie = context.Categories.Find(id);
             return categorie;
         }
 
