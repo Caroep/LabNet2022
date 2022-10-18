@@ -8,11 +8,16 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.UI.WebControls;
 using System.Web.WebSockets;
 
 namespace Practica.EF.WebApi.Controllers
 {
+    //    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
+    //    [RoutePrefix("api/categories")]
+
+
     public class CategoriesController : ApiController
     {
         CategoriesService categoriesService = new CategoriesService();
